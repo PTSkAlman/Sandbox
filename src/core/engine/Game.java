@@ -67,7 +67,7 @@ public class Game implements Runnable {
 
     // Handle user input
     private void input() {
-
+        //player.movement();
     }
 
     // Update the game
@@ -85,7 +85,6 @@ public class Game implements Runnable {
         }
         Graphics g = bs.getDrawGraphics();
 
-        update();
         g.setColor(Color.WHITE);
         g.fillRect(0,0,width,height);
         for (int i = 1; i*16 <= width ; i++) {
