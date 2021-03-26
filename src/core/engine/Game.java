@@ -1,6 +1,7 @@
 package core.engine;
 
 import core.game.Blocks;
+import core.game.Player;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -23,6 +24,10 @@ public class Game implements Runnable {
     private BufferedImage bIGround;
     private BufferedImage bIWood;
     private BufferedImage bILeaves;
+    private BufferedImage bIPlayer;
+
+    // Create player
+    private final Player player = new Player("player",bIPlayer);
 
     // Create blocks
     private final Blocks ground = new Blocks("ground", bIGround);
@@ -36,6 +41,8 @@ public class Game implements Runnable {
         window.init();
         thread = new Thread(this);
         running = false;
+
+        player.init();
 
         // Initialize blocks
         ground.init();
@@ -95,6 +102,7 @@ public class Game implements Runnable {
             ground.drawBlock(g,width-i*16,height-16*11);
             ground.drawBlock(g,width-i*16,height-16*12);
         }
+        player.drawPlayer(g,width/2,height-16*14);
         g.dispose();
         bs.show();
     }

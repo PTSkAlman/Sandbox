@@ -6,12 +6,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Blocks {
+public class Player {
 
     private BufferedImage bufferedImage;
     private final String texture;
 
-    public Blocks(String texture, BufferedImage bufferedImage) {
+    public Player(String texture, BufferedImage bufferedImage) {
         this.texture = texture;
         this.bufferedImage = bufferedImage;
     }
@@ -24,7 +24,7 @@ public class Blocks {
         }
     }
 
-    public void drawBlock(Graphics g, int posX, int posY) {
-        g.drawImage(bufferedImage,posX,posY,16,16,null);
+    public void drawPlayer(Graphics g, int posX, int posY) {
+        g.drawImage(bufferedImage,posX,posY,16,32,null);
     }
 }
