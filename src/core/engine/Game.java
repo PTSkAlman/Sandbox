@@ -12,7 +12,7 @@ public class Game implements Runnable {
     private final Window window;
     private final Thread thread;
 
-    private int width,height;
+    public static int width,height;
 
     private boolean running;
 
@@ -39,6 +39,7 @@ public class Game implements Runnable {
         this.height = height;
         window = new Window(title, width, height);
         window.init();
+        window.addKeyListener(player.keylistener);
         thread = new Thread(this);
         running = false;
 
@@ -67,12 +68,14 @@ public class Game implements Runnable {
 
     // Handle user input
     private void input() {
-        //player.movement();
+        player.movement();
     }
 
     // Update the game
     private void update() {
-
+        System.out.println(player.hitbox.x);
+        player.hitbox.x = player.playerX;
+        player.hitbox.y = player.playerY;
     }
 
     // Render everything
@@ -101,7 +104,7 @@ public class Game implements Runnable {
             ground.drawBlock(g,width-i*16,height-16*11);
             ground.drawBlock(g,width-i*16,height-16*12);
         }
-        player.drawPlayer(g,width/2,height-16*14);
+        player.drawPlayer(g, player.playerX, player.playerY);
         g.dispose();
         bs.show();
     }
